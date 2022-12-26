@@ -12,12 +12,11 @@ struct parkir{
     int durasi;
     char golongan[MAX];
     struct parkir *next;
-}*front, *frontNode, *rear, *temp, *p;
+} *front, *frontNode, *rear, *temp, *p;
 
 int count = 0;
 
-void menu()
-{
+void menu(){
     printf("\n\n");
 	printf("SISTEM PEMBAYARAN PARKIR KENDARAAN PERTOKOAN X\n");
 	printf("----------------------------------------------\n");
@@ -53,8 +52,7 @@ void enqueue(char newPlatDepan[], int newPlatNo, char newPlatBelakang[], char ne
         rear->durasi = newDur;
         strcpy(rear->golongan, newGol);
         front = rear;
-    }
-    else{
+    } else {
         temp=(struct parkir *)malloc(1*sizeof(struct parkir));
         rear->next = temp;
         strcpy(temp->hurufDepanPlat, newPlatDepan);
@@ -76,16 +74,14 @@ void dequeue(char newPlatDepan[], int newPlatNo, char newPlatBelakang[]){
     if (frontNode == NULL){
         printf("\n Error: Trying to display elements from empty queue");
         return;
-    }
-    else{
+    } else {
     	if (frontNode->next != NULL){
             frontNode = frontNode->next;
             printf("Data berhasil di dequeue!\n\n");
 			printf("Data dengan plat nomor kendaraan %s %d %s telah terhapus!", front->hurufDepanPlat, front->noPlat, front->hurufBelakangPlat);
             free(front);
             front = frontNode;
-        }
-        else{
+        } else {
             printf("Data berhasil di dequeue!\n\n");
 			printf("Data dengan plat nomor kendaraan %s %d %s telah terhapus!", front->hurufDepanPlat, front->noPlat, front->hurufBelakangPlat);
             free(front);
@@ -96,8 +92,7 @@ void dequeue(char newPlatDepan[], int newPlatNo, char newPlatBelakang[]){
 	}  
 }
 
-void printNode(struct parkir *p)
-{
+void printNode(struct parkir *p){
     printf("\n|\t%s %d %s\t|\t%s\t|\t%d\t|\t%s\t|\n", p->hurufDepanPlat, p->noPlat, p->hurufBelakangPlat, p->warnaKendaraan, p->durasi, p->golongan);
     printf("-------------------------------------------------------------------------");
 }
@@ -121,8 +116,7 @@ void display(){
 	}
 }
 
-void search(char searchPlatDepan[], int searchPlatNo, char searchPlatBelakang[])
-{
+void search(char searchPlatDepan[], int searchPlatNo, char searchPlatBelakang[]){
     frontNode = front;
 	
 	while (frontNode != rear){
@@ -143,21 +137,18 @@ void search(char searchPlatDepan[], int searchPlatNo, char searchPlatBelakang[])
 	printf("\nData kendaraan dengan nomor plat %s %d %s tidak ditemukan", searchPlatDepan, searchPlatNo, searchPlatBelakang);
 }
 
-int main()
-{
+int main(){
     int platNo, dur;
     char platDepan[30], platBelakang[30], warna[30], gol[30];
     char pilihMenu;
  	
-	  createQueue();
+	createQueue();
  	
-    do
-    {
+    do{
     	menu();
     	printf("\n\nPilih menu yang tersedia: ");
 	    scanf("%d", &pilihMenu);
-        switch(pilihMenu)
-        {
+        switch(pilihMenu){
         case 1:
 			printf("Masukkan plat no kendaraan (ex: L 1234 LL): ");
 			scanf("%s %d %s", &platDepan, &platNo, &platBelakang);
@@ -199,7 +190,7 @@ int main()
         case 3:
             display();
             break;
-	case 4:
+	    case 4:
             printf("MASUKKAN PLAT NOMOR YANG DATANYA INGIN DICARI");
 			printf("\nMasukkan plat no kendaraan (ex: L 1234 LL): ");
 			scanf("%s %d %s", &platDepan, &platNo, &platBelakang);
@@ -208,8 +199,10 @@ int main()
         case 5: 
         	exit(0);
 			break;
+
 		default:
 			printf("Menu yang dipilih salah, tekan enter untuk memasukkan ulang menu!");
         }
+
     } while (pilihMenu != '5');
 }
