@@ -1,9 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <conio.h>
 #include <string.h>
-#include <math.h>
 #define MAX 30
 
 struct parkir{
@@ -20,10 +18,11 @@ int count = 0;
 
 void menu()
 {
+    printf("\n\n");
 	printf("SISTEM PEMBAYARAN PARKIR KENDARAAN PERTOKOAN X\n");
 	printf("----------------------------------------------\n");
     printf("1. add data kendaraan pada antrean\n");
-    printf("2. pembayaran parkir (delete data)\n");
+    printf("2. delete data kendaraan yang sudah melakukan transaksi\n");
     printf("3. display all data\n");
 	printf("4. search\n");
     printf("5. exit\n");
@@ -70,33 +69,7 @@ void enqueue(char newPlatDepan[], int newPlatNo, char newPlatBelakang[], char ne
     count++;
 }
 
-int biayaParkir(int durasiParkir, char golKendaraan[]){
-	int totalBiaya;
-	double pembulatanDurasi;
-	if(durasiParkir <= 5){
-		totalBiaya = 0;
-	}
-	else if(durasiParkir > 5 && durasiParkir <= 60){
-		if((compareString(golKendaraan, "R2")) == 0){
-			totalBiaya = 5000;
-		}
-		if((compareString(golKendaraan, "R4")) == 0){
-			totalBiaya = 10000;
-		}
-	}
-	else if(durasiParkir > 60){
-		pembulatanDurasi = ceil(durasiParkir/60.0);
-		if((compareString(golKendaraan, "R2")) == 0){
-			totalBiaya = 5000 + ((pembulatanDurasi-1)*1000);
-		}
-		if((compareString(golKendaraan, "R4")) == 0){
-			totalBiaya = 10000 + ((pembulatanDurasi-1)*1000);
-		}
-	}
-	return totalBiaya;
-}
-
-void dequeue(){
+void dequeue(char newPlatDepan[], int newPlatNo, char newPlatBelakang[]){
     fflush(stdin);
 	frontNode = front;
  
@@ -107,16 +80,12 @@ void dequeue(){
     else{
     	if (frontNode->next != NULL){
             frontNode = frontNode->next;
-			printf("No plat kendaraan: %s %d %s\n", front->hurufDepanPlat, front->noPlat, front->hurufBelakangPlat);
-            printf("Biaya parkir kendaraan: %d\n", biayaParkir(front->durasi, front->golongan));
             printf("Data berhasil di dequeue!\n\n");
 			printf("Data dengan plat nomor kendaraan %s %d %s telah terhapus!", front->hurufDepanPlat, front->noPlat, front->hurufBelakangPlat);
             free(front);
             front = frontNode;
         }
         else{
-			printf("No plat kendaraan: %s %d %s\n", front->hurufDepanPlat, front->noPlat, front->hurufBelakangPlat);
-            printf("Biaya parkir kendaraan: %d\n", biayaParkir(front->durasi, front->golongan));
             printf("Data berhasil di dequeue!\n\n");
 			printf("Data dengan plat nomor kendaraan %s %d %s telah terhapus!", front->hurufDepanPlat, front->noPlat, front->hurufBelakangPlat);
             free(front);
@@ -138,10 +107,10 @@ void display(){
 	
 	printf("-------------------------------------------------------------------------");
 	printf("\n|\tPlat Nomor\t|\tWarna\t|\tDurasi\t|\tGol\t|\n");
-	printf("-------------------------------------------------------------------------");
+    printf("-------------------------------------------------------------------------");
  	
     if ((frontNode == NULL) && (rear == NULL)){
-        printf("\nQueue is empty");
+        printf("Queue is empty");
     }
     while (frontNode != rear){
         printNode(frontNode);
@@ -159,6 +128,7 @@ void search(char searchPlatDepan[], int searchPlatNo, char searchPlatBelakang[])
 	while (frontNode != rear){
         if ((compareString(frontNode->hurufDepanPlat, searchPlatDepan) == 0) && (frontNode->noPlat == searchPlatNo) && (compareString(frontNode->hurufBelakangPlat, searchPlatBelakang) == 0)){
             printf("\nData kendaraan ditemukan:\n");
+            printf("-------------------------------------------------------------------------");
             printNode(frontNode);
             return;
         }
@@ -166,6 +136,7 @@ void search(char searchPlatDepan[], int searchPlatNo, char searchPlatBelakang[])
     }
     if ((frontNode == rear) && (compareString(frontNode->hurufDepanPlat, searchPlatDepan) == 0) && (frontNode->noPlat == searchPlatNo) && (compareString(frontNode->hurufBelakangPlat, searchPlatBelakang) == 0)){
     	printf("\nData kendaraan ditemukan:\n");
+        printf("-------------------------------------------------------------------------");
 		printNode(frontNode);
 		return;	
 	}
@@ -188,7 +159,6 @@ int main()
         switch(pilihMenu)
         {
         case 1:
-        	system("cls");
 			printf("Masukkan plat no kendaraan (ex: L 1234 LL): ");
 			scanf("%s %d %s", &platDepan, &platNo, &platBelakang);
             
@@ -219,37 +189,27 @@ int main()
 			}
 			
             enqueue(platDepan, platNo, platBelakang, warna, dur, gol);
-            system("cls");
             break;
         case 2:
-        	system("cls");
-            dequeue();
-            getch();
-            system("cls");
+            printf("MASUKKAN PLAT NOMOR YANG DATANYA INGIN DIHAPUS");
+			printf("\nMasukkan plat no kendaraan (ex: L 1234 LL): ");
+			scanf("%s %d %s", &platDepan, &platNo, &platBelakang);
+            dequeue(platDepan, platNo, platBelakang);
             break;
         case 3:
-        	system("cls");
             display();
-            getch();
-            system("cls");
             break;
 	case 4:
-        	system("cls");
             printf("MASUKKAN PLAT NOMOR YANG DATANYA INGIN DICARI");
 			printf("\nMasukkan plat no kendaraan (ex: L 1234 LL): ");
 			scanf("%s %d %s", &platDepan, &platNo, &platBelakang);
             search(platDepan, platNo, platBelakang);
-            getch();
-            system("cls");
             break;
         case 5: 
         	exit(0);
 			break;
 		default:
-			system("cls");
 			printf("Menu yang dipilih salah, tekan enter untuk memasukkan ulang menu!");
-			getch();
-			system("cls");
         }
     } while (pilihMenu != '5');
 }
