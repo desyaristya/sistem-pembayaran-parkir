@@ -20,11 +20,12 @@ int count = 0;
 void menu()
 {
 	printf("SISTEM PEMBAYARAN PARKIR KENDARAAN PERTOKOAN X\n");
-    printf("----------------------------------------------\n");
+	printf("----------------------------------------------\n");
     printf("1. add data kendaraan pada antrean\n");
     printf("2. delete data kendaraan yang sudah melakukan transaksi\n");
     printf("3. display all data\n");
-    printf("4. exit\n");
+	printf("4. search\n");
+    printf("5. exit\n");
     printf("----------------------------------------------\n");
 }
 
@@ -120,6 +121,26 @@ void display(){
 	}
 }
 
+void search(char searchPlatDepan[], int searchPlatNo, char searchPlatBelakang[])
+{
+    frontNode = front;
+	
+	while (frontNode != rear){
+        if ((compareString(frontNode->hurufDepanPlat, searchPlatDepan) == 0) && (frontNode->noPlat == searchPlatNo) && (compareString(frontNode->hurufBelakangPlat, searchPlatBelakang) == 0)){
+            printf("\nData kendaraan ditemukan:\n");
+            printNode(frontNode);
+            return;
+        }
+        frontNode = frontNode->next;
+    }
+    if ((frontNode == rear) && (compareString(frontNode->hurufDepanPlat, searchPlatDepan) == 0) && (frontNode->noPlat == searchPlatNo) && (compareString(frontNode->hurufBelakangPlat, searchPlatBelakang) == 0)){
+    	printf("\nData kendaraan ditemukan:\n");
+		printNode(frontNode);
+		return;	
+	}
+	printf("\nData kendaraan dengan nomor plat %s %d %s tidak ditemukan", searchPlatDepan, searchPlatNo, searchPlatBelakang);
+}
+
 int main()
 {
     int platNo, dur;
@@ -184,7 +205,16 @@ int main()
             getch();
             system("cls");
             break;
-        case 4: 
+	case 4:
+        	system("cls");
+            printf("MASUKKAN PLAT NOMOR YANG DATANYA INGIN DICARI");
+			printf("\nMasukkan plat no kendaraan (ex: L 1234 LL): ");
+			scanf("%s %d %s", &platDepan, &platNo, &platBelakang);
+            search(platDepan, platNo, platBelakang);
+            getch();
+            system("cls");
+            break;
+        case 5: 
         	exit(0);
 			break;
 		default:
