@@ -2,11 +2,11 @@
 STRUKTUR DATA KELAS C
 <br>
 KELOMPOK 1
-1. 20081010240 Desya Ristya Putri
-2. 21081010064 Faris Munir Mahdi
-3. 21081010066 Nauval Maulana Rizky Irawan
-4. 21081010065 Achmad Robby Sabilul Firdaus
-5. 20081010174 Satria Aqilla Gunawan
+1. Desya Ristya Putri (20081010240)
+2. Faris Munir Mahdi (21081010064)
+3. Nauval Maulana Rizky Irawan (21081010066)
+4. Achmad Robby Sabilul Firdaus (21081010065)
+5. Satria Aqilla Gunawan (20081010174)
 
 <br>
 Studi kasus: Sistem Pembayaran Keluar Parkir Kendaraan
