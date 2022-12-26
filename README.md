@@ -1,7 +1,13 @@
 # Sistem Pembayaran Parkir
-KELOMPOK 1
-<br>
 STRUKTUR DATA KELAS C
+<br>
+KELOMPOK 1
+1. 20081010240 Desya Ristya Putri
+2. 21081010064 Faris Munir Mahdi
+3. 21081010066 Nauval Maulana Rizky Irawan
+4. 21081010065 Achmad Robby Sabilul Firdaus
+5. 20081010174 Satria Aqilla Gunawan
+
 <br>
 Studi kasus: Sistem Pembayaran Keluar Parkir Kendaraan
 <br>
@@ -26,12 +32,11 @@ Biaya parkir memiliki ketentuan sebagai berikut.
 	- Jumat: putih
 	- Sabtu: Selain hitam dan putih
 	- Minggu: hitam
-Kondisi ini juga mempertimbangkan warna kendaraan pada antrean paling depan. Apabila kendaraan di antrean depan memiliki warna yang sama dengan ketentuan hari, maka pelanggan prioritas dilayani setelah beberapa kendaraan dengan warna yang sesuai hari tersebut selesai dilayani.
 3. Parkir dengan durasi <= 5 menit tidak dikenakan biaya (gratis).
 4. Parkir pada 60 menit pertama dikenakan biaya:
 	- R2: 5000
 	- R4: 10000
-Untuk durasi selanjutnya, dikenakan biaya 1000 setiap 60 menit berikutnya.
+<br>Untuk durasi selanjutnya, dikenakan biaya 1000 setiap 60 menit berikutnya.
 
 Penerapan struktur data pada kasus:
 1. Queue, digunakan untuk menyimpan data antrean kendaraan dengan metode First In First Out.
