@@ -1,0 +1,17 @@
+Final Project MK Struktur Data Kelas C081
+Judul Aplikasi: Sistem Pembayaran Parkir
+Kelompok 1
+Anggota Kelompok:
+1) Desya Ristya Putri (20081010240)
+2) Faris Munir Mahdi (21081010064)
+3) Nauval Maulana Rizky Irawan (21081010066)
+4) Achmad Robby Sabilul Firdaus (21081010065)
+
+Link Github:
+https://github.com/desyaristya/sistem-pembayaran-parkir
+
+Link Video Presentasi:
+https://drive.google.com/drive/u/3/folders/1ZZHqlayARHnCB-MyyQlB2gxYhvLAX6FR
+Terdapat dua video presentasi, yaitu:
+1. Video penjelasan project dan penjelasan kode program
+2. Video demo progam
