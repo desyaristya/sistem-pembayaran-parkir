@@ -6,7 +6,6 @@ KELOMPOK 1
 2. Faris Munir Mahdi (21081010064)
 3. Nauval Maulana Rizky Irawan (21081010066)
 4. Achmad Robby Sabilul Firdaus (21081010065)
-5. Satria Aqilla Gunawan (20081010174)
 
 <br>
 Studi kasus: Sistem Pembayaran Keluar Parkir Kendaraan
